@@ -2,6 +2,7 @@ import React, { useCallback, useState } from "react";
 import Banner from "./banner";
 import navValues from "../helpers/navValues";
 import ComponentPicker from "./componentPicker";
+import SearchPatient from "./searchPage";
 
 const navigationContext = React.createContext(navValues.patient);
 
@@ -17,6 +18,7 @@ const App = () => {
       <Banner>
         <div>Electronic Health Record Management System</div>
       </Banner>
+      <SearchPatient></SearchPatient>
       <ComponentPicker currentNavLocation={nav.current} />      
     </navigationContext.Provider>
   );
