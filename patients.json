@@ -1,0 +1,40 @@
+{
+  "patients": [
+    {
+      "id": 1,
+      "firstname": "Gregory",
+      "surname": "Dennison",
+      "phone": "(206) 342-8631"
+    },
+    {
+      "id": 2,
+      "firstname": "Sandra",
+      "surname": "Newman",
+      "phone": "(717) 550-1675"
+    },
+    {
+      "id": 3,
+      "firstname": "Amy",
+      "surname": "Knight",
+      "phone": "(248) 762-0356"
+    },
+    {
+      "id": 4,
+      "firstname": "Roy",
+      "surname": "Baney",
+      "phone": "(253) 644-2182"
+    },
+    {
+      "id": 5,
+      "firstname": "Arthur",
+      "surname": "Moran",
+      "phone": "(212) 658-3916"
+    },
+    {
+      "id": 6,
+      "firstname": "Clarita",
+      "surname": "Bassler",
+      "phone": "(209) 300-2557"
+    }
+  ]
+}
