@@ -1,0 +1,18 @@
+<html>
+    <button id="myButton">Click me</button>
+
+<script>
+document.getElementById('myButton').addEventListener('click', function() {
+    // Define the code
+    var code = `
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://yourwebsite.com', true);
+        xhr.withCredentials = true;
+        xhr.send();
+    `;
+    // Execute the code
+    new Function(code)();
+});
+</script>
+
+</html>
