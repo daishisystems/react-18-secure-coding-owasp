@@ -3,6 +3,7 @@ import Banner from "./banner";
 import navValues from "../helpers/navValues";
 import ComponentPicker from "./componentPicker";
 import SearchPatient from "./searchPage";
+import InjectScript from "./injectScript";
 
 const navigationContext = React.createContext(navValues.patient);
 
@@ -19,6 +20,7 @@ const App = () => {
         <div>Electronic Health Record Management System</div>
       </Banner>
       <SearchPatient></SearchPatient>
+      <InjectScript></InjectScript>
       <ComponentPicker currentNavLocation={nav.current} />      
     </navigationContext.Provider>
   );
