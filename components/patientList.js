@@ -14,9 +14,9 @@ const PatientList = () => {
       ...patients,
       {
         id: 7,
-        firstname: "Paul",
-        surname: "Mooney",
-        phone: "085 7198 398",
+        firstname: "John",
+        surname: "Smith",
+        phone: "089 7124 8390",
       },
     ]);
   };
