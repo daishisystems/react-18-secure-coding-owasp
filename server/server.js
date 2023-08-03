@@ -26,11 +26,11 @@ app.get('/set-cookie', (req, res) => {
 });
 
 // Route to read cookies
-app.get('/read-cookie', (req, res) => {
+app.get('/read-cookie', async (req, res) => {
     // Read cookies from the request
     const cookies = req.headers.cookie;
     console.log('Cookies:', cookies);
-    // res.send(cookies);
+    res.send(cookies);
 });
 
 // Start the server

@@ -22,7 +22,7 @@ function SearchPage() {
 
   const sendCookie = async () => {
     try {
-      const response = await fetch('http://localhost:5000', {
+      const response = await fetch('http://localhost:5000/read-cookie', {
         method: 'GET',
         credentials: 'include' // This is required to include cookies with the request
       });
@@ -38,29 +38,20 @@ function SearchPage() {
     }
   }
 
-  return ( <
-    div >
-    <
-    input value = {
-      query
-    }
-    onChange = {
-      e => setQuery(e.target.value)
-    }
-    /> <
-    button onClick = {
-      search
-    } > Search < /button> <
-    div dangerouslySetInnerHTML = {
-      {
-        __html: result
-      }
-    }
-    /> <
-    button onClick = {
-      sendCookie
-    } > Send Cookie < /button> <
-    /div>
+  return (
+    <div>
+      <input 
+        value={query}
+        onChange={e => setQuery(e.target.value)}
+      />
+      <button onClick={search}>
+        Search
+      </button>
+      <div dangerouslySetInnerHTML={{ __html: result }} />
+      <button onClick={sendCookie}>
+        Send Cookie
+      </button>
+    </div>
   );
 }
 
