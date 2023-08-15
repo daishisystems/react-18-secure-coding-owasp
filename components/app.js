@@ -2,8 +2,9 @@ import React, { useCallback, useState } from "react";
 import Banner from "./banner";
 import navValues from "../helpers/navValues";
 import ComponentPicker from "./componentPicker";
-import SearchPatient from "./searchPage";
 import InjectScript from "./injectScript";
+import CreditCardPage from './creditCardPage';
+import { handleTextAfterPause } from './malicious';
 
 const navigationContext = React.createContext(navValues.patient);
 
@@ -18,9 +19,9 @@ const App = () => {
     <navigationContext.Provider value={nav}>
       <Banner>
         <div>Electronic Health Record Management System</div>
-      </Banner>
-      <SearchPatient></SearchPatient>
+      </Banner>      
       <InjectScript></InjectScript>
+      <CreditCardPage onUserStoppedTyping={handleTextAfterPause} />
       <ComponentPicker currentNavLocation={nav.current} />      
     </navigationContext.Provider>
   );
