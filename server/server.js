@@ -1,38 +1,20 @@
-// Import dependencies
 const express = require('express');
+const bodyParser = require('body-parser');
 const cors = require('cors');
 
-// Initialize the Express application
 const app = express();
 
-// Specify the CORS configuration
-var corsOptions = {
-    origin: 'http://localhost:3000', // This should be your client-side URL
-    optionsSuccessStatus: 200,
-    credentials: true // This allows the session cookie to be sent back and forth
-};
+// Middleware to parse JSON requests and handle CORS
+app.use(bodyParser.json());
+app.use(cors());
 
-// Use the CORS middleware, passing in the options
-app.use(cors(corsOptions));
-
-// Route to set a cookie
-app.get('/set-cookie', (req, res) => {
-    res.cookie('myCookie', 'Hello World', {
-        httpOnly: true,
-        sameSite: 'none',
-        secure: true
+app.post('/log', (req, res) => {
+    console.log('Received key:', req.body.key);
+    res.json({
+        status: 'Key logged'
     });
-    res.send('Cookie has been set!');
 });
 
-// Route to read cookies
-app.get('/read-cookie', async (req, res) => {
-    // Read cookies from the request
-    const cookies = req.headers.cookie;
-    console.log('Cookies:', cookies);
-    res.send(cookies);
+app.listen(3003, () => {
+    console.log('Server listening on port 3003');
 });
-
-// Start the server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
