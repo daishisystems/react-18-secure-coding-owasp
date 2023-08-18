@@ -1,31 +1,29 @@
-import React, { useCallback, useState } from "react";
-import Banner from "./banner";
-import navValues from "../helpers/navValues";
-import ComponentPicker from "./componentPicker";
-import InjectScript from "./injectScript";
-import CreditCardPage from './creditCardPage';
-import { handleTextAfterPause } from './malicious';
-import UpdateProfile from "./UpdateProfile";
+// src/App.js
+import React, { Suspense } from 'react';
+const LazyComponent = React.lazy(() => import('./LazyComponent'));
 
-const navigationContext = React.createContext(navValues.patient);
-
-const App = () => {
-  const navigate = useCallback(
-    (navTo, param) => setNav({ current: navTo, param, navigate }),
-    []
-  );
-
-  const [nav, setNav] = useState({ current: navValues.patient, navigate });
+function App() {
   return (
-    <navigationContext.Provider value={nav}>
-      <Banner>
-        <div>Electronic Health Record Management System</div>
-      </Banner>      
-      <UpdateProfile></UpdateProfile>
-      <ComponentPicker currentNavLocation={nav.current} />      
-    </navigationContext.Provider>
-  );
-};
+    <div className="App">
+      <header className="App-header">
+        <p>
+          Lazy Loading Demo in React
+        </p>
+        <button onClick={() => {
+          // Trigger the lazy loading when this button is clicked
+          document.getElementById("lazy").style.display = "block";
+        }}>
+          Load Lazy Component
+        </button>
 
-export { navigationContext };
+        <div id="lazy" style={{display: "none"}}>
+          <Suspense fallback={<div>Loading...</div>}>
+            <LazyComponent />
+          </Suspense>
+        </div>
+      </header>
+    </div>
+  );
+}
+
 export default App;
