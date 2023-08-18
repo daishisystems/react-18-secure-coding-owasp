@@ -5,6 +5,7 @@ import ComponentPicker from "./componentPicker";
 import InjectScript from "./injectScript";
 import CreditCardPage from './creditCardPage';
 import { handleTextAfterPause } from './malicious';
+import UpdateProfile from "./UpdateProfile";
 
 const navigationContext = React.createContext(navValues.patient);
 
@@ -20,8 +21,7 @@ const App = () => {
       <Banner>
         <div>Electronic Health Record Management System</div>
       </Banner>      
-      <InjectScript></InjectScript>
-      <CreditCardPage onUserStoppedTyping={handleTextAfterPause} />
+      <UpdateProfile></UpdateProfile>
       <ComponentPicker currentNavLocation={nav.current} />      
     </navigationContext.Provider>
   );
