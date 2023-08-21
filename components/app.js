@@ -5,15 +5,12 @@ const LazyComponent = React.lazy(() => import('./LazyComponent'));
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Lazy Loading Demo in React
-        </p>
+      <header className="App-header">        
         <button onClick={() => {
           // Trigger the lazy loading when this button is clicked
           document.getElementById("lazy").style.display = "block";
         }}>
-          Load Lazy Component
+          Load Patients
         </button>
 
         <div id="lazy" style={{display: "none"}}>
